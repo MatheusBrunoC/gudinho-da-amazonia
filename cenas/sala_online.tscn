@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://dqyhfpfaoidqe"]
+
+[ext_resource type="Script" uid="uid://didtixovra4n5" path="res://scripts/sala_online.gd" id="1"]
+[ext_resource type="Theme" uid="uid://ba2iyc674i7ad" path="res://recursos/tema_interface.tres" id="1_pskqo"]
+[ext_resource type="Texture2D" uid="uid://8hw0jhnva01i" path="res://recursos/imagens/fundo_menu.png" id="3_6im7l"]
+
+[node name="SalaOnline" type="Control" unique_id=1553313314]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pskqo")
+script = ExtResource("1")
+
+[node name="Fundo" type="TextureRect" parent="." unique_id=682852049]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_6im7l")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Centro" type="CenterContainer" parent="." unique_id=1785299557]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Opcoes" type="VBoxContainer" parent="Centro" unique_id=1084824483]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Titulo" type="Label" parent="Centro/Opcoes" unique_id=183985568]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.07058824, 0.23921569, 0.1764706, 1)
+theme_override_font_sizes/font_size = 30
+text = "Sala online — dois jogadores"
+horizontal_alignment = 1
+
+[node name="Etapa" type="Label" parent="Centro/Opcoes" unique_id=23393128]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.07058824, 0.23921569, 0.1764706, 1)
+theme_override_font_sizes/font_size = 18
+text = "Confirme sua presença para iniciar um confronto de duas rodadas."
+horizontal_alignment = 1
+
+[node name="Endereco" type="LineEdit" parent="Centro/Opcoes" unique_id=1516660167]
+unique_name_in_owner = true
+layout_mode = 2
+text = "127.0.0.1"
+placeholder_text = "IP do anfitrião (127.0.0.1 para testar neste PC)"
+alignment = 1
+
+[node name="Porta" type="SpinBox" parent="Centro/Opcoes" unique_id=1694003854]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1024.0
+max_value = 65535.0
+value = 8910.0
+alignment = 1
+prefix = "Porta UDP:"
+
+[node name="Criar" type="Button" parent="Centro/Opcoes" unique_id=1834495654]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Criar sala"
+
+[node name="Entrar" type="Button" parent="Centro/Opcoes" unique_id=1087570358]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Entrar na sala"
+
+[node name="Pronto" type="Button" parent="Centro/Opcoes" unique_id=1214452224]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Estou pronto"
+
+[node name="Desconectar" type="Button" parent="Centro/Opcoes" unique_id=1073294485]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Desconectar"
+
+[node name="Voltar" type="Button" parent="Centro/Opcoes" unique_id=557512396]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Voltar ao menu"
+
+[node name="Estado" type="Label" parent="Centro/Opcoes" unique_id=1258479753]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(700, 48)
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="Jogadores" type="Label" parent="Centro/Opcoes" unique_id=1380108221]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(700, 50)
+layout_mode = 2

@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://5edhd2hocppq"]
+
+[ext_resource type="Script" uid="uid://do60ct17lg68r" path="res://scripts/interface_partida.gd" id="1_djdx6"]
+[ext_resource type="Theme" uid="uid://ba2iyc674i7ad" path="res://recursos/tema_interface.tres" id="2_psy7u"]
+[ext_resource type="Script" uid="uid://81qoy0f6tap1" path="res://scripts/barra_forca.gd" id="3_fh05e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh05e"]
+bg_color = Color(0.04755766, 0.047557645, 0.047557645, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Interface" type="CanvasLayer" unique_id=1724434939]
+script = ExtResource("1_djdx6")
+
+[node name="HUD" type="Control" parent="." unique_id=1436132505]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_psy7u")
+
+[node name="BarraForca" type="ProgressBar" parent="HUD" unique_id=1708052403]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 650.0
+offset_right = 290.0
+offset_bottom = 677.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_fh05e")
+script = ExtResource("3_fh05e")
+
+[node name="TextoPontuacao" type="Label" parent="HUD" unique_id=1264277070]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.5
+offset_right = 62.5
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 28
+text = "Pontos: 0"
+
+[node name="TextoVez" type="Label" parent="HUD" unique_id=417215126]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.0
+offset_top = 38.0
+offset_right = 95.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Vez de Jogador 1"
+
+[node name="TextoRodada" type="Label" parent="HUD" unique_id=2029422802]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 155.0
+offset_right = 80.0
+offset_bottom = 183.0
+theme_override_font_sizes/font_size = 20
+
+[node name="BotaoContinuar" type="Button" parent="HUD" unique_id=1091891529]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 640.0
+offset_right = 1240.0
+offset_bottom = 690.0
+text = "Próxima rodada"
+
+[node name="BotaoMenu" type="Button" parent="HUD" unique_id=80429339]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -254.0
+offset_top = 12.0
+offset_right = -14.0
+offset_bottom = 62.0
+grow_horizontal = 0
+text = "Voltar ao menu"

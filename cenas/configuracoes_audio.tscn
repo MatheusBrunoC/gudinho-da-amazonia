@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://buvj0eqopnqhr"]
+
+[ext_resource type="Theme" uid="uid://ba2iyc674i7ad" path="res://recursos/tema_interface.tres" id="1_bvol6"]
+[ext_resource type="Script" uid="uid://byh3qnjlrjvkm" path="res://scripts/configuracoes_audio.gd" id="2_kpny8"]
+[ext_resource type="Texture2D" uid="uid://8hw0jhnva01i" path="res://recursos/imagens/fundo_menu.png" id="3_nqre5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpny8"]
+bg_color = Color(0.65882355, 0.8352941, 0.7294118, 1)
+border_width_left = 2
+border_width_top = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ConfiguracoesAudio" type="Control" unique_id=968092730]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bvol6")
+script = ExtResource("2_kpny8")
+
+[node name="Fundo" type="TextureRect" parent="." unique_id=1707854515]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_nqre5")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Centro" type="CenterContainer" parent="." unique_id=643693802]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Opcoes" type="VBoxContainer" parent="Centro" unique_id=483939996]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Titulo" type="Label" parent="Centro/Opcoes" unique_id=1041816241]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.1764706, 0.1254902, 1)
+theme_override_font_sizes/font_size = 24
+text = "Áudio"
+horizontal_alignment = 1
+
+[node name="TextoVolume" type="Label" parent="Centro/Opcoes" unique_id=225836039]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.1764706, 0.1254902, 1)
+theme_override_font_sizes/font_size = 20
+text = "Volume dos efeitos: 100%"
+horizontal_alignment = 1
+
+[node name="VolumeEfeitos" type="HSlider" parent="Centro/Opcoes" unique_id=1971343813]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+value = 100.0
+
+[node name="SilenciarEfeitos" type="CheckButton" parent="Centro/Opcoes" unique_id=818876990]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_kpny8")
+text = "                                         Silenciar efeitos"
+
+[node name="TestarSom" type="Button" parent="Centro/Opcoes" unique_id=1063677224]
+layout_mode = 2
+text = "Testar som de colisão"
+
+[node name="Aviso" type="Label" parent="Centro/Opcoes" unique_id=1117003196]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.047058824, 0.1764706, 0.1254902, 1)
+theme_override_font_sizes/font_size = 19
+text = "As alterações são aplicadas imediatamente."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Voltar" type="Button" parent="Centro/Opcoes" unique_id=1097374139]
+layout_mode = 2
+text = "Salvar e voltar"

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ckypks2y6cmso"]
+
+[ext_resource type="Script" uid="uid://dlpm44k5tgrs6" path="res://scripts/bolinha.gd" id="1_lic2a"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lic2a"]
+friction = 0.2
+bounce = 0.4
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kpx0g"]
+radius = 12.0
+
+[node name="Bolinha" type="RigidBody2D" unique_id=1700986610]
+physics_material_override = SubResource("PhysicsMaterial_lic2a")
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 8
+linear_damp_mode = 1
+linear_damp = 1.0
+script = ExtResource("1_lic2a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=4164318]
+shape = SubResource("CircleShape2D_kpx0g")

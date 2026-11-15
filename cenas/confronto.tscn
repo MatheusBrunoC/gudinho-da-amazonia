@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://gg82gwwgbllx"]
+
+[ext_resource type="Script" uid="uid://bck6dpa06hac0" path="res://scripts/confronto.gd" id="1_qvkpd"]
+
+[node name="Confronto" type="Node2D" unique_id=1978015112]
+script = ExtResource("1_qvkpd")

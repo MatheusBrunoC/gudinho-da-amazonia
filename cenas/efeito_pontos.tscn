@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c8ayym1wxsm8g"]
+
+[ext_resource type="Script" uid="uid://cqs0uu5jyklvd" path="res://scripts/efeito_pontos.gd" id="1_7e10v"]
+
+[node name="EfeitoPontos" type="Node2D" unique_id=790015881]
+script = ExtResource("1_7e10v")
+
+[node name="Texto" type="Label" parent="." unique_id=906768555]
+offset_right = 40.0
+offset_bottom = 23.0

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://djbq0sdh33ncj"]
+
+[ext_resource type="Script" uid="uid://bck6dpa06hac0" path="res://scripts/confronto.gd" id="1_dh2fu"]
+
+[node name="Treino" type="Node2D" unique_id=1978015112]
+script = ExtResource("1_dh2fu")
+contra_computador = true

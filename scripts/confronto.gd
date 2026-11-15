@@ -11,11 +11,13 @@ var _total_jogador2: int = 0
 
 var _aguardando_continuacao: bool = false
 var _transicao_pendente: bool = false
-
+var _perfil_treino_id: int = 0
+var _identificador_treino: String = ""
+var _historico_enviado: bool = false
 
 func _ready() -> void:
+	_preparar_registro_treino()
 	_criar_rodada()
-
 
 func _criar_rodada() -> void:
 	_aguardando_continuacao = false
@@ -57,7 +59,7 @@ func _ao_encerrar_rodada(pontos1: int, pontos2: int) -> void:
 			"Próxima rodada"
 		)
 		return
-
+	_registrar_resultado_treino()
 	var resultado: String = "A partida terminou empatada!"
 
 	if _total_jogador1 > _total_jogador2:
@@ -91,6 +93,8 @@ func _avancar() -> void:
 		_total_jogador1 = 0
 		_total_jogador2 = 0
 
+		_preparar_registro_treino()
+
 	_criar_rodada()
 	_transicao_pendente = false
 
@@ -113,3 +117,40 @@ func _voltar_ao_menu() -> void:
 	if erro != OK:
 		_transicao_pendente = false
 		push_error("Falha ao abrir o menu: %s" % error_string(erro))
+
+func _preparar_registro_treino() -> void:
+	_perfil_treino_id = 0
+	_identificador_treino = ""
+	_historico_enviado = false
+
+	if not contra_computador:
+		return
+
+	_identificador_treino = HistoricoTreinos.gerar_identificador()
+
+	var configuracao: ConfigFile = ConfigFile.new()
+	var erro: Error = configuracao.load("user://perfil.cfg")
+
+	if erro != OK:
+		push_warning(
+			"Treino sem perfil salvo: o resultado não será enviado."
+		)
+		return
+
+	_perfil_treino_id = int(
+		configuracao.get_value("jogador", "id", 0)
+	)
+
+
+func _registrar_resultado_treino() -> void:
+	if not contra_computador or _historico_enviado:
+		return
+
+	_historico_enviado = true
+
+	HistoricoTreinos.salvar_treino(
+		_identificador_treino,
+		_perfil_treino_id,
+		_total_jogador1,
+		_total_jogador2
+	)

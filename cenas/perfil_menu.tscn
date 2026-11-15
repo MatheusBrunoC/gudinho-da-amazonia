@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b3a7p36x5cnir"]
+
+[ext_resource type="Script" uid="uid://c4w1ta1brhttq" path="res://scripts/consulta_perfil.gd" id="1_27xw8"]
+[ext_resource type="Script" uid="uid://obqjl4va8wrq" path="res://scripts/perfil_menu.gd" id="1_xadva"]
+
+[node name="PerfilMenu" type="VBoxContainer" unique_id=1047805791]
+offset_right = 186.0
+offset_bottom = 28.0
+script = ExtResource("1_xadva")
+
+[node name="ConsultaPerfil" type="HTTPRequest" parent="." unique_id=1150766618]
+script = ExtResource("1_27xw8")
+
+[node name="TextoPerfil" type="Label" parent="." unique_id=1977900207]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Perfil do jogador"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Apelido" type="LineEdit" parent="." unique_id=1327951348]
+layout_mode = 2
+placeholder_text = "Digite seu apelido"
+max_length = 30
+
+[node name="CriarPerfil" type="Button" parent="." unique_id=1931385225]
+layout_mode = 2
+text = "Criar perfil"
+
+[node name="TentarNovamente" type="Button" parent="." unique_id=106834449]
+layout_mode = 2
+text = "Tentar Novamente"

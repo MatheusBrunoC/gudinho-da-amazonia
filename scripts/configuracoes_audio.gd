@@ -60,7 +60,7 @@ func _salvar_e_voltar() -> void:
 		return
 
 	erro = get_tree().change_scene_to_file(
-		"res://cenas/menu_inicial.tscn"
+		"res://cenas/menu_opcoes.tscn"
 	)
 
 	if erro != OK:

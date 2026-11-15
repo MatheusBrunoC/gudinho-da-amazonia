@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://rrysui5grixb"]
+
+[ext_resource type="Theme" uid="uid://ba2iyc674i7ad" path="res://recursos/tema_interface.tres" id="1_ascoi"]
+[ext_resource type="Script" uid="uid://c08xaeau3letx" path="res://scripts/menu_opcoes.gd" id="2_ascoi"]
+[ext_resource type="Texture2D" uid="uid://8hw0jhnva01i" path="res://recursos/imagens/fundo_menu.png" id="3_x415j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6auh"]
+bg_color = Color(0.07058824, 0.23921569, 0.1764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.65882355, 0.8352941, 0.7294118, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[node name="MenuOpcoes" type="Control" unique_id=1611534106]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ascoi")
+script = ExtResource("2_ascoi")
+
+[node name="Fundo" type="TextureRect" parent="." unique_id=524484510]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_x415j")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Centro" type="CenterContainer" parent="." unique_id=1427237275]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.5
+offset_top = -175.0
+offset_right = 191.5
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Painel" type="Panel" parent="Centro" unique_id=1703455521]
+custom_minimum_size = Vector2(520, 560)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i6auh")
+
+[node name="Opcoes" type="VBoxContainer" parent="Centro" unique_id=1424172154]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Titulo" type="Label" parent="Centro/Opcoes" unique_id=1524689804]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Opções"
+horizontal_alignment = 1
+
+[node name="BotaoAudio" type="Button" parent="Centro/Opcoes" unique_id=395906564]
+layout_mode = 2
+text = "Áudio"
+
+[node name="BotaoInstrucoes" type="Button" parent="Centro/Opcoes" unique_id=662887681]
+layout_mode = 2
+text = "Instruções"
+
+[node name="BotaoVoltar" type="Button" parent="Centro/Opcoes" unique_id=1635969708]
+custom_minimum_size = Vector2(360, 55)
+layout_mode = 2
+text = "Voltar"
+
+[node name="Instrucoes" type="AcceptDialog" parent="." unique_id=378908773]
+dialog_text = "COMO JOGAR
+
+OBJETIVO
+Retire as bolinhas do círculo para somar pontos.
+O confronto tem duas rodadas. Vence quem acumular mais pontos!
+
+CONTROLES
+Na sua primeira vez em cada rodada, clique em uma posição
+válida fora da área proibida para colocar sua bolinha.
+
+Mova o mouse para mirar.
+Segure o botão esquerdo para carregar a força.
+Solte para disparar.
+
+Nas próximas tacadas, você joga de onde sua bolinha parou.
+
+PONTUAÇÃO
+Bolinhas comuns: 1 ponto.
+Bolinhas especiais: 2 pontos.
+Bolinha central: 3 pontos.
+
+Os pontos são contabilizados quando as bolinhas param.
+Para pontuar, a bolinha-alvo precisa sair completamente do círculo.
+
+TURNOS
+Se marcar pontos, você pode jogar novamente.
+Cada turno permite no máximo duas tacadas.
+Se não marcar pontos, a vez passa ao adversário.
+
+DUAS RODADAS
+O Jogador 1 começa a primeira rodada.
+O Jogador 2 começa a segunda.
+Os pontos das duas rodadas são somados.
+Se os totais forem iguais, o confronto termina empatado.
+
+LIMITES DA ARENA
+A câmera amplia a visão conforme necessário.
+Ao ultrapassar o limite máximo, sua bolinha reaparece
+pelo lado oposto.
+
+TREINO E ONLINE
+No treino, você enfrenta o computador.
+No online, cada participante controla sua própria bolinha.
+Os dois precisam confirmar para avançar à próxima rodada."

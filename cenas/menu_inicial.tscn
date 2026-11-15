@@ -72,28 +72,15 @@ horizontal_alignment = 1
 [node name="BotaoJogar" type="Button" parent="Centro/Opcoes" unique_id=842249076]
 custom_minimum_size = Vector2(360, 55)
 layout_mode = 2
-text = "Jogar — 2 jogadores locais"
+text = "Jogar"
 
-[node name="BotaoTreino" type="Button" parent="Centro/Opcoes" unique_id=1613116650]
-custom_minimum_size = Vector2(360, 55)
+[node name="BotaoPerfil" type="Button" parent="Centro/Opcoes" unique_id=605511730]
 layout_mode = 2
-text = "Treinar contra o computador"
+text = "Meu perfil"
 
-[node name="BotaoOnline" type="Button" parent="Centro/Opcoes" unique_id=162871284]
-custom_minimum_size = Vector2(360, 55)
+[node name="BotaoOpcoes" type="Button" parent="Centro/Opcoes" unique_id=164003568]
 layout_mode = 2
-text = "Jogar online — 2 jogadores"
-
-[node name="BotaoAudio" type="Button" parent="Centro/Opcoes" unique_id=1751914289]
-custom_minimum_size = Vector2(360, 55)
-layout_mode = 2
-text = "Áudio
-"
-
-[node name="BotaoInstrucoes" type="Button" parent="Centro/Opcoes" unique_id=2041967132]
-custom_minimum_size = Vector2(360, 55)
-layout_mode = 2
-text = "Como jogar"
+text = "Opções"
 
 [node name="BotaoSair" type="Button" parent="Centro/Opcoes" unique_id=1635969708]
 custom_minimum_size = Vector2(360, 55)

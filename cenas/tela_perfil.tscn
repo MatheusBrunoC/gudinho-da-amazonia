@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://cprty6kx27nlr"]
+
+[ext_resource type="Theme" uid="uid://ba2iyc674i7ad" path="res://recursos/tema_interface.tres" id="1_4gm6u"]
+[ext_resource type="Script" uid="uid://d1wp2tkn2osih" path="res://scripts/tela_perfi.gd" id="2_1chkk"]
+[ext_resource type="Texture2D" uid="uid://8hw0jhnva01i" path="res://recursos/imagens/fundo_menu.png" id="3_ua7oj"]
+[ext_resource type="PackedScene" uid="uid://b3a7p36x5cnir" path="res://cenas/perfil_menu.tscn" id="4_ua7oj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6auh"]
+bg_color = Color(0.07058824, 0.23921569, 0.1764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.65882355, 0.8352941, 0.7294118, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[node name="TelaPerfil" type="Control" unique_id=1611534106]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4gm6u")
+script = ExtResource("2_1chkk")
+
+[node name="Fundo" type="TextureRect" parent="." unique_id=524484510]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_ua7oj")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Centro" type="CenterContainer" parent="." unique_id=1427237275]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -280.0
+offset_right = 260.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Painel" type="Panel" parent="Centro" unique_id=1703455521]
+custom_minimum_size = Vector2(520, 560)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i6auh")
+
+[node name="Opcoes" type="VBoxContainer" parent="Centro" unique_id=1424172154]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Titulo" type="Label" parent="Centro/Opcoes" unique_id=1524689804]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Meu perfil"
+horizontal_alignment = 1
+
+[node name="PerfilMenu" parent="Centro/Opcoes" unique_id=1047805791 instance=ExtResource("4_ua7oj")]
+layout_mode = 2
+
+[node name="BotaoVoltar" type="Button" parent="Centro/Opcoes" unique_id=1635969708]
+custom_minimum_size = Vector2(360, 55)
+layout_mode = 2
+text = "Voltar"

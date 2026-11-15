@@ -1,0 +1,16 @@
+CREATE DATABASE IF NOT EXISTS gudinho_amazonia
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_0900_ai_ci;
+
+USE gudinho_amazonia;
+
+CREATE TABLE IF NOT EXISTS jogadores (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    apelido VARCHAR(30) NOT NULL,
+    criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+
+    CONSTRAINT chk_jogadores_apelido
+        CHECK (CHAR_LENGTH(TRIM(apelido)) BETWEEN 1 AND 30)
+) ENGINE = InnoDB;

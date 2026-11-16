@@ -30,7 +30,7 @@ func _ready() -> void:
 	_usar_perfil.pressed.connect(_usar_perfil_selecionado)
 	_lista_perfis.item_selected.connect(_ao_selecionar_item)
 
-	_consulta_lista.timeout = 8.0
+	_consulta_lista.timeout = 90.0
 	_consulta_lista.request_completed.connect(_ao_receber_lista)
 
 	var configuracao: ConfigFile = ConfigFile.new()

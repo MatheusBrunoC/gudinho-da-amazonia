@@ -4,7 +4,7 @@ extends HTTPRequest
 signal perfil_carregado(perfil: Dictionary)
 signal consulta_falhou(mensagem: String)
 
-@export var endereco_api: String = "http://127.0.0.1:8000"
+@export var endereco_api: String = SessaoJogador.ENDERECO_API
 
 
 func _ready() -> void:

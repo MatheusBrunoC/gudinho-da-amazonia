@@ -3,7 +3,7 @@ extends Node
 signal treino_salvo(registro: Dictionary)
 signal salvamento_falhou(mensagem: String)
 signal estado_atualizado(identificador: String, mensagem: String)
-const ENDERECO_API: String = "http://127.0.0.1:8000"
+#const ENDERECO_API: String = SessaoJogador.ENDERECO_API
 
 
 func gerar_identificador() -> String:
@@ -42,7 +42,7 @@ func salvar_treino(
 		return
 	estado_atualizado.emit(identificador, "Salvando resultado...")
 	var requisicao: HTTPRequest = HTTPRequest.new()
-	requisicao.timeout = 10.0
+	requisicao.timeout = 90.0
 	add_child(requisicao)
 
 	requisicao.request_completed.connect(

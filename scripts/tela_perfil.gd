@@ -21,7 +21,7 @@ func _ready() -> void:
 	_sair_perfil.pressed.connect(_sair_do_perfil)
 	_atualizar.pressed.connect(_carregar_perfil)
 
-	_consulta.timeout = 10.0
+	_consulta.timeout = 90.0
 	_consulta.request_completed.connect(_ao_receber_resposta)
 
 	_nome.text = "Carregando perfil..."

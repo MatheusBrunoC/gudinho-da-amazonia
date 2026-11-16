@@ -17,7 +17,7 @@ func _ready() -> void:
 	_criar.pressed.connect(_cadastrar)
 	_voltar.pressed.connect(_voltar_ao_login)
 
-	_consulta.timeout = 10.0
+	_consulta.timeout = 90.0
 	_consulta.request_completed.connect(_ao_receber_resposta)
 
 	_apelido.grab_focus()

@@ -4,8 +4,7 @@ signal login_realizado(perfil: Dictionary)
 signal login_falhou(mensagem: String)
 signal sessao_encerrada
 
-const ENDERECO_API: String = "http://127.0.0.1:8000"
-
+const ENDERECO_API: String = "https://gudinho-api.onrender.com"
 var _requisicao: HTTPRequest
 var _token: String = ""
 var _perfil: Dictionary = {}
@@ -17,7 +16,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	_requisicao = HTTPRequest.new()
-	_requisicao.timeout = 10.0
+	_requisicao.timeout = 90.0
 	add_child(_requisicao)
 
 	_requisicao.request_completed.connect(_ao_receber_login)

@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://ctmjjntc85dtj"]
+
+[ext_resource type="Theme" uid="uid://ba2iyc674i7ad" path="res://recursos/tema_interface.tres" id="1_h575i"]
+[ext_resource type="Script" uid="uid://c562t5bh4unnm" path="res://scripts/tela_cadastro.gd" id="2_h575i"]
+[ext_resource type="Texture2D" uid="uid://8hw0jhnva01i" path="res://recursos/imagens/fundo_menu.png" id="3_r7op4"]
+
+[node name="TelaCadastro" type="Control" unique_id=836058988]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_h575i")
+script = ExtResource("2_h575i")
+
+[node name="Fundo" type="TextureRect" parent="." unique_id=105090851]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_r7op4")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Centro" type="CenterContainer" parent="." unique_id=710158322]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Campos" type="VBoxContainer" parent="Centro" unique_id=329358949]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="Centro/Campos" unique_id=645317362]
+layout_mode = 2
+theme_override_colors/font_color = Color(8.663535e-07, 0.56893295, 0.32780302, 1)
+text = "Criar conta"
+horizontal_alignment = 1
+
+[node name="Apelido" type="LineEdit" parent="Centro/Campos" unique_id=2020251971]
+layout_mode = 2
+placeholder_text = "Apelido no jogo"
+max_length = 30
+
+[node name="Usuario" type="LineEdit" parent="Centro/Campos" unique_id=1083276084]
+layout_mode = 2
+placeholder_text = "Usuário: letras, números e _"
+max_length = 30
+
+[node name="Senha" type="LineEdit" parent="Centro/Campos" unique_id=1052529405]
+layout_mode = 2
+placeholder_text = "Senha: mínimo de 15 caracteres"
+max_length = 128
+secret = true
+
+[node name="ConfirmarSenha" type="LineEdit" parent="Centro/Campos" unique_id=200502742]
+layout_mode = 2
+placeholder_text = "Repita a senha"
+max_length = 128
+secret = true
+
+[node name="CriarConta" type="Button" parent="Centro/Campos" unique_id=75735038]
+layout_mode = 2
+text = "Criar Conta"
+
+[node name="Mensagem" type="Label" parent="Centro/Campos" unique_id=48827766]
+layout_mode = 2
+text = "Voltar ao Login"
+autowrap_mode = 3
+
+[node name="Voltar" type="Button" parent="Centro/Campos" unique_id=733436896]
+layout_mode = 2
+text = "Voltar ao menu"
+
+[node name="ConsultaCadastro" type="HTTPRequest" parent="." unique_id=1413939053]

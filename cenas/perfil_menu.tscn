@@ -4,12 +4,9 @@
 [ext_resource type="Script" uid="uid://obqjl4va8wrq" path="res://scripts/perfil_menu.gd" id="1_xadva"]
 
 [node name="PerfilMenu" type="VBoxContainer" unique_id=1047805791]
-offset_right = 186.0
-offset_bottom = 28.0
+offset_right = 304.0
+offset_bottom = 168.0
 script = ExtResource("1_xadva")
-
-[node name="ConsultaPerfil" type="HTTPRequest" parent="." unique_id=1150766618]
-script = ExtResource("1_27xw8")
 
 [node name="TextoPerfil" type="Label" parent="." unique_id=1977900207]
 layout_mode = 2
@@ -17,6 +14,17 @@ theme_override_font_sizes/font_size = 20
 text = "Perfil do jogador"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="EscolherPerfil" type="HBoxContainer" parent="." unique_id=2095282552]
+layout_mode = 2
+
+[node name="ListaPerfis" type="OptionButton" parent="EscolherPerfil" unique_id=1159006466]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UsarPerfil" type="Button" parent="EscolherPerfil" unique_id=393723103]
+layout_mode = 2
+text = "Usar perfil"
 
 [node name="Apelido" type="LineEdit" parent="." unique_id=1327951348]
 layout_mode = 2
@@ -30,3 +38,8 @@ text = "Criar perfil"
 [node name="TentarNovamente" type="Button" parent="." unique_id=106834449]
 layout_mode = 2
 text = "Tentar Novamente"
+
+[node name="ConsultaPerfil" type="HTTPRequest" parent="." unique_id=1150766618]
+script = ExtResource("1_27xw8")
+
+[node name="ConsultaLista" type="HTTPRequest" parent="." unique_id=467630545]

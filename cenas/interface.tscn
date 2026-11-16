@@ -61,11 +61,16 @@ text = "Vez de Jogador 1"
 
 [node name="TextoRodada" type="Label" parent="HUD" unique_id=2029422802]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 155.0
-offset_right = 80.0
-offset_bottom = 183.0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 60.0
+offset_bottom = 88.0
 theme_override_font_sizes/font_size = 20
+
+[node name="TextoHistorico" type="Label" parent="HUD" unique_id=900815525]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="BotaoContinuar" type="Button" parent="HUD" unique_id=1091891529]
 layout_mode = 0

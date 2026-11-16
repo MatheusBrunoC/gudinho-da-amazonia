@@ -93,3 +93,41 @@ class RepositorioTreinos:
                 cursor.close()
 
             conexao.close()
+
+    def listar_por_jogador(self, jogador_id: int, limite: int = 10):
+        conexao = abrir_conexao()
+        cursor = None
+
+        try:
+            cursor = conexao.cursor(dictionary=True)
+
+            cursor.execute(
+                """
+                SELECT
+                    id,
+                    jogador_id,
+                    pontos_jogador,
+                    pontos_computador,
+                    criado_em,
+                    CASE
+                        WHEN pontos_jogador > pontos_computador
+                            THEN 'vitoria'
+                        WHEN pontos_jogador < pontos_computador
+                            THEN 'derrota'
+                        ELSE 'empate'
+                    END AS resultado
+                FROM historico_treinos
+                WHERE jogador_id = %s
+                ORDER BY criado_em DESC, id DESC
+                LIMIT %s
+                """,
+                (jogador_id, limite),
+            )
+
+            return cursor.fetchall()
+
+        finally:
+            if cursor is not None:
+                cursor.close()
+
+            conexao.close()

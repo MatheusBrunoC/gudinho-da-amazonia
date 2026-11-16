@@ -12,12 +12,18 @@ signal menu_solicitado
 @onready var _botao_continuar: Button = $HUD/BotaoContinuar
 @onready var _botao_menu: Button = $HUD/BotaoMenu
 
+@onready var _texto_historico: Label = $HUD/TextoHistorico
+
+var _permite_desistir: bool = false
+
+
 func _ready() -> void:
 	_botao_continuar.hide()
 	_botao_continuar.pressed.connect(_solicitar_continuacao)
 	_botao_menu.hide()
 	_botao_menu.pressed.connect(_solicitar_menu)
-
+	_texto_historico.hide()
+	
 func atualizar_forca(carga: float) -> void:
 	_barra_forca.value = clampf(carga, 0.0, 1.0) * 100.0
 
@@ -44,12 +50,20 @@ func mostrar_contexto(numero: int, total1: int, total2: int) -> void:
 	]
 
 
-func mostrar_resultado(resultado: String, texto_botao: String, permitir_menu: bool = false) -> void:
+func mostrar_resultado(
+	resultado: String,
+	texto_botao: String,
+	permitir_menu: bool = false
+) -> void:
 	_texto_vez.text = resultado
 	_botao_continuar.text = texto_botao
 	_botao_continuar.disabled = false
 	_botao_continuar.show()
-	_botao_menu.visible = permitir_menu
+
+	_botao_menu.text = (
+		"Voltar ao menu" if permitir_menu else "Desistir"
+	)
+	_botao_menu.visible = permitir_menu or _permite_desistir
 
 
 func _solicitar_continuacao() -> void:
@@ -61,3 +75,13 @@ func mostrar_escolha_posicao(nome_jogador: String) -> void:
 	
 func _solicitar_menu() -> void:
 	menu_solicitado.emit()
+
+func mostrar_estado_historico(mensagem: String) -> void:
+	_texto_historico.text = mensagem
+	_texto_historico.visible = not mensagem.is_empty()
+
+
+func permitir_desistencia(permitir: bool) -> void:
+	_permite_desistir = permitir
+	_botao_menu.text = "Desistir"
+	_botao_menu.visible = permitir

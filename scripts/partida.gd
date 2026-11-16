@@ -1,3 +1,4 @@
+
 class_name RodadaPartida
 extends Node2D
 
@@ -361,7 +362,7 @@ func _confirmar_posicao_inicial(posicao_global: Vector2) -> void:
 	_preparar_vez()
 
 func _solicitar_menu() -> void:
-	if partida_encerrada:
+	if partida_encerrada or contra_computador:
 		menu_solicitado.emit()
 		
 func eh_vez_computador() -> bool:

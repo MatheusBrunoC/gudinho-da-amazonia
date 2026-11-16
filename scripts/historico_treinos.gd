@@ -2,7 +2,7 @@ extends Node
 
 signal treino_salvo(registro: Dictionary)
 signal salvamento_falhou(mensagem: String)
-
+signal estado_atualizado(identificador: String, mensagem: String)
 const ENDERECO_API: String = "http://127.0.0.1:8000"
 
 
@@ -26,36 +26,41 @@ func gerar_identificador() -> String:
 
 func salvar_treino(
 	identificador: String,
-	jogador_id: int,
+	cabecalhos_sessao: PackedStringArray,
 	pontos_jogador: int,
 	pontos_computador: int
 ) -> void:
-	if jogador_id <= 0:
-		_informar_falha("Treino não enviado: nenhum perfil selecionado.")
+	if cabecalhos_sessao.is_empty():
+		_informar_falha(
+			"Treino não enviado: nenhuma sessão foi iniciada "
+			+ "antes do confronto."
+		)
+		estado_atualizado.emit(
+			identificador,
+			"Treino sem conta — resultado não salvo."
+		)
 		return
-
+	estado_atualizado.emit(identificador, "Salvando resultado...")
 	var requisicao: HTTPRequest = HTTPRequest.new()
 	requisicao.timeout = 10.0
 	add_child(requisicao)
 
 	requisicao.request_completed.connect(
-		_ao_concluir.bind(requisicao)
+		_ao_concluir.bind(requisicao, identificador)
+	)
+	requisicao.request_completed.connect(
+		_publicar_estado.bind(identificador)
 	)
 
 	var dados: Dictionary = {
 		"identificador": identificador,
-		"jogador_id": jogador_id,
 		"pontos_jogador": pontos_jogador,
 		"pontos_computador": pontos_computador
 	}
 
-	var cabecalhos: PackedStringArray = PackedStringArray([
-		"Content-Type: application/json"
-	])
-
 	var erro: Error = requisicao.request(
-		ENDERECO_API + "/treinos",
-		cabecalhos,
+		SessaoJogador.ENDERECO_API + "/treinos",
+		cabecalhos_sessao,
 		HTTPClient.METHOD_POST,
 		JSON.stringify(dados)
 	)
@@ -66,27 +71,46 @@ func salvar_treino(
 			"Não foi possível iniciar o envio: %s"
 			% error_string(erro)
 		)
-
+		estado_atualizado.emit(
+			identificador,
+			"Não foi possível iniciar o salvamento."
+		)
 
 func _ao_concluir(
 	resultado: int,
 	codigo_http: int,
 	_cabecalhos: PackedStringArray,
 	corpo: PackedByteArray,
-	requisicao: HTTPRequest
+	requisicao: HTTPRequest,
+	identificador_esperado: String
 ) -> void:
 	requisicao.queue_free()
 
 	if resultado != HTTPRequest.RESULT_SUCCESS:
 		_informar_falha(
-			"Não foi possível confirmar o salvamento. Verifique a API."
+			"Não foi possível confirmar o salvamento. "
+			+ "Verifique a conexão com a API."
+		)
+		return
+
+	if codigo_http == 401:
+		_informar_falha(
+			"A sessão usada neste treino expirou ou é inválida. "
+			+ "O resultado não foi salvo. Entre novamente."
+		)
+		return
+
+	if codigo_http == 409:
+		_informar_falha(
+			"O identificador deste treino já foi utilizado "
+			+ "com outros dados."
 		)
 		return
 
 	if codigo_http != 200 and codigo_http != 201:
 		_informar_falha(
-			"Falha ao salvar treino. HTTP %d: %s"
-			% [codigo_http, corpo.get_string_from_utf8()]
+			"Não foi possível salvar o treino. HTTP %d."
+			% codigo_http
 		)
 		return
 
@@ -94,19 +118,55 @@ func _ao_concluir(
 	var erro: Error = json.parse(corpo.get_string_from_utf8())
 
 	if erro != OK or not json.data is Dictionary:
-		_informar_falha("A API retornou uma resposta inválida.")
+		_informar_falha(
+			"A API retornou uma confirmação inválida."
+		)
 		return
 
 	var registro: Dictionary = json.data
 
-	if not registro.has("id"):
-		_informar_falha("A resposta da API não contém o ID do treino.")
+	if (
+		int(registro.get("id", 0)) <= 0
+		or str(registro.get("identificador", "")) != identificador_esperado
+	):
+		_informar_falha(
+			"A resposta não corresponde ao treino enviado."
+		)
 		return
 
-	print("Treino salvo no banco! ID: ", registro["id"])
+	print("Treino salvo na conta! ID: ", registro["id"])
 	treino_salvo.emit(registro)
 
 
 func _informar_falha(mensagem: String) -> void:
 	push_warning(mensagem)
 	salvamento_falhou.emit(mensagem)
+
+func _publicar_estado(
+	resultado: int,
+	codigo_http: int,
+	_cabecalhos: PackedStringArray,
+	corpo: PackedByteArray,
+	identificador: String
+) -> void:
+	var mensagem: String = "Salvamento não confirmado. Consulte o histórico."
+
+	if resultado == HTTPRequest.RESULT_SUCCESS:
+		if codigo_http == 401:
+			mensagem = "Resultado não salvo: sessão inválida ou expirada."
+		elif codigo_http == 409:
+			mensagem = "Resultado não salvo: identificador em conflito."
+		elif codigo_http == 200 or codigo_http == 201:
+			var json: JSON = JSON.new()
+			var erro: Error = json.parse(corpo.get_string_from_utf8())
+
+			if erro == OK and json.data is Dictionary:
+				var registro: Dictionary = json.data
+
+				if (
+					int(registro.get("id", 0)) > 0
+					and str(registro.get("identificador", "")) == identificador
+				):
+					mensagem = "Resultado salvo no histórico."
+
+	estado_atualizado.emit(identificador, mensagem)

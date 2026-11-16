@@ -21,6 +21,7 @@ config/icon="uid://c4yf8w4ua5o35"
 RedeSala="*res://scripts/rede_sala.gd"
 SonsJogo="*uid://capxetcgtco1g"
 HistoricoTreinos="*uid://i1et0qlkps0f"
+SessaoJogador="*uid://da0n3st2v34y8"
 
 [display]
 

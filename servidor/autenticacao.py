@@ -1,6 +1,6 @@
 import logging
 
-import mysql.connector
+import psycopg
 from fastapi import Depends, HTTPException
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from jwt import InvalidTokenError
@@ -35,7 +35,7 @@ def exigir_jogador(
     try:
         jogador = _repositorio.buscar_conta_por_id(jogador_id)
 
-    except mysql.connector.Error:
+    except psycopg.Error:
         _logger.exception("Falha ao consultar jogador autenticado.")
 
         raise HTTPException(

@@ -1,19 +1,18 @@
-from pathlib import Path
 import os
+from pathlib import Path
 
-import mysql.connector
+import psycopg
 from dotenv import load_dotenv
+from psycopg.rows import dict_row
 
 
 load_dotenv(Path(__file__).resolve().parent / ".env")
 
 
 def abrir_conexao():
-    return mysql.connector.connect(
-        host=os.environ["DB_HOST"],
-        port=int(os.environ["DB_PORT"]),
-        database=os.environ["DB_NAME"],
-        user=os.environ["DB_USER"],
-        password=os.environ["DB_PASSWORD"],
-        connection_timeout=5,
+    return psycopg.connect(
+        os.environ["DATABASE_URL"],
+        row_factory=dict_row,
+        connect_timeout=30,
+        options="-c timezone=America/Manaus",
     )

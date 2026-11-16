@@ -1,7 +1,7 @@
 import logging
 from datetime import datetime
 
-import mysql.connector
+import psycopg
 from fastapi import FastAPI, HTTPException, Path
 from pydantic import BaseModel, field_validator
 
@@ -136,8 +136,8 @@ def registrar_treino(
             detail="Este identificador já foi utilizado.",
         ) from None
 
-    except mysql.connector.Error:
-        logger.exception("Falha ao salvar treino no MySQL.")
+    except psycopg.Error:
+        logger.exception("Falha ao salvar treino no PostgreSQL.")
 
         raise HTTPException(
             status_code=503,
@@ -208,14 +208,14 @@ def cadastrar_conta(request: Request, dados: ContaCadastro):
             senha_hash=senha_hash,
         )
 
-    except mysql.connector.Error as erro:
-        if erro.errno == 1062:
+    except psycopg.Error as erro:
+        if erro.sqlstate == "23505":
             raise HTTPException(
                 status_code=409,
                 detail="Este nome de usuário já está em uso.",
             ) from None
 
-        logger.exception("Falha ao cadastrar conta no MySQL.")
+        logger.exception("Falha ao cadastrar conta no PostgreSQL.")
 
         raise HTTPException(
             status_code=503,
@@ -253,7 +253,7 @@ def entrar(request: Request, dados: LoginEntrada):
             dados.nome_usuario
         )
 
-    except mysql.connector.Error:
+    except psycopg.Error:
         logger.exception("Falha ao consultar conta para login.")
 
         raise HTTPException(
@@ -311,7 +311,7 @@ def consultar_meus_treinos(
             limite,
         )
 
-    except mysql.connector.Error:
+    except psycopg.Error:
         logger.exception("Falha ao consultar histórico de treinos.")
 
         raise HTTPException(

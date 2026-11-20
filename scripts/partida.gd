@@ -13,8 +13,8 @@ signal alvo_recolhido(posicao_global: Vector2, valor: int)
 @onready var seletor: SeletorPosicao = $SeletorPosicao
 
 const MAX_TACADAS_CONSECUTIVAS: int = 2
-const IMPULSO_MINIMO: float = 150.0
-const IMPULSO_MAXIMO: float = 750.0
+const IMPULSO_MINIMO: float = 350.0
+const IMPULSO_MAXIMO: float = 1400.0
 const TEMPO_CARGA: float = 1.5
 const COMPRIMENTO_MIRA: float = 180.0
 const CENA_EFEITO_PONTOS: PackedScene = preload(

@@ -2,7 +2,7 @@ class_name CampoCircular
 extends CampoBase
 
 #var tamanho_campo: Vector2 = Vector2(1280, 720)
-var centro_circulo: Vector2 = Vector2(640, 360)
+var centro_circulo: Vector2 = RegrasPartida.CENTRO_CIRCULO
 var raio_circulo: float = 140.0
 
 #var cor_terra: Color = Color("#B88758")
@@ -22,9 +22,11 @@ func _draw() -> void:
 		true
 	)
 
-	var y: float = RegrasPartida.altura_linha(centro_circulo)
-	draw_line(Vector2(12, y), Vector2(1268, y), cor_linha, 4.0, true)
-	draw_string(ThemeDB.fallback_font, Vector2(24, y - 12), "LINHA DE LANÇAMENTO • posicione abaixo", HORIZONTAL_ALIGNMENT_LEFT, -1, 18, cor_linha)
+	var x: float = RegrasPartida.x_linha(centro_circulo)
+	draw_rect(Rect2(x, 0, 1280 - x, 720), Color(0.15, 0.55, 0.3, 0.12))
+	draw_line(Vector2(x, 12), Vector2(x, 708), cor_linha, 4.0, true)
+	draw_string(ThemeDB.fallback_font, Vector2(x + 24, 230), "ÁREA DE LANÇAMENTO", HORIZONTAL_ALIGNMENT_LEFT, -1, 18, cor_linha)
+	draw_string(ThemeDB.fallback_font, Vector2(x + 24, 257), "Posicione à direita da linha", HORIZONTAL_ALIGNMENT_LEFT, -1, 16, cor_linha)
 
 func bolinha_esta_fora(posicao_global: Vector2, raio: float) -> bool:
 	var posicao_local: Vector2 = to_local(posicao_global)

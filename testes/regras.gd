@@ -33,18 +33,18 @@ func run() -> void:
 	var area: Rect2 = rodada.arena.obter_area_inicial()
 	var centro: Vector2 = rodada.campo.obter_centro_global()
 	var vazios: Array[Bolinha] = []
-	conferir(seletor.posicao_permitida(Vector2(640, 600), centro, 12, area, vazios), "Entrada atrás da linha")
-	conferir(not seletor.posicao_permitida(Vector2(640, 579), centro, 12, area, vazios), "Recusa acima da linha")
-	conferir(not seletor.posicao_permitida(Vector2(640, 590), centro, 12, area, vazios), "Bolinha inteira deve estar atrás")
+	conferir(seletor.posicao_permitida(Vector2(1040, 360), centro, 12, area, vazios), "Entrada atrás da linha")
+	conferir(not seletor.posicao_permitida(Vector2(999, 360), centro, 12, area, vazios), "Recusa à esquerda da linha")
+	conferir(not seletor.posicao_permitida(Vector2(1010, 360), centro, 12, area, vazios), "Bolinha inteira deve estar atrás")
 	conferir(not seletor.posicao_permitida(Vector2(-1, 600), centro, 12, area, vazios), "Recusa fora da arena")
 	conferir(not seletor.posicao_permitida(Vector2(INF, 600), centro, 12, area, vazios), "Recusa coordenada inválida")
 	var bola: Bolinha = rodada.jogadores[0].bolinha
-	bola.entrar_em_campo(Vector2(640, 600))
+	bola.entrar_em_campo(Vector2(1040, 360))
 	vazios.append(bola)
-	conferir(not seletor.posicao_permitida(Vector2(640, 600), centro, 12, area, vazios), "Recusa sobreposição")
+	conferir(not seletor.posicao_permitida(Vector2(1040, 360), centro, 12, area, vazios), "Recusa sobreposição")
 	bola.aguardar_entrada()
 	bola.aguardar_entrada()
-	bola.entrar_em_campo(Vector2(640, 600))
+	bola.entrar_em_campo(Vector2(1040, 360))
 	conferir(bola.collision_layer != 0 and bola.collision_mask != 0, "Reentrada preserva colisões")
 	conferir(bola.visible and bola.get_node("Arte").visible, "Arte visível após reentrada")
 	# Sem pontos: troca, sem reposicionar quem parou fora.
@@ -82,7 +82,7 @@ func run() -> void:
 	rodada.indice_jogador_atual = 1
 	rodada._jogar_computador()
 	bola = rodada.jogadores[1].bolinha
-	conferir(bola.em_campo and bola.global_position.y >= 592, "Computador posiciona atrás da linha")
+	conferir(bola.em_campo and bola.global_position.x >= 1012, "Computador posiciona atrás da linha")
 	bola.global_position = centro
 	rodada.finalizar_jogada()
 	conferir(not bola.em_campo, "Computador também recebe penalidade")

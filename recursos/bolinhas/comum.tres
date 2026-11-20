@@ -1,6 +1,6 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://v80xhym24n77"]
 
-[ext_resource type="Texture2D" path="res://imagens_gude/amarelo_forte.png" id="10_xxpyt"]
+[ext_resource type="Texture2D" uid="uid://ckpdp65abj8x7" path="res://imagens_gude/amarelo_forte.png" id="10_xxpyt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c2232"]
 atlas = ExtResource("10_xxpyt")
@@ -117,8 +117,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_aoqij")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
-

@@ -82,7 +82,7 @@ func _solicitar_continuacao() -> void:
 	continuacao_solicitada.emit()
 	
 func mostrar_escolha_posicao(nome_jogador: String) -> void:
-	_texto_vez.text = "%s: clique abaixo da linha para posicionar a bolinha." % nome_jogador
+	_texto_vez.text = "%s: clique à direita da linha para posicionar a bolinha." % nome_jogador
 	
 func _solicitar_menu() -> void:
 	menu_solicitado.emit()

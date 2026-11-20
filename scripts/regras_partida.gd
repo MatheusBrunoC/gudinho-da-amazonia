@@ -1,8 +1,9 @@
 class_name RegrasPartida
 extends RefCounted
 
-# Distância do centro do círculo até a linha horizontal (pixels do mundo).
-const DISTANCIA_LINHA: float = 220.0
+const CENTRO_CIRCULO: Vector2 = Vector2(300, 360)
+# Distância horizontal do centro do círculo até a linha vertical.
+const DISTANCIA_LINHA: float = 700.0
 
-static func altura_linha(centro: Vector2) -> float:
-	return centro.y + DISTANCIA_LINHA
+static func x_linha(centro: Vector2) -> float:
+	return centro.x + DISTANCIA_LINHA

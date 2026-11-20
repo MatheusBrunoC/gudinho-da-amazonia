@@ -110,7 +110,7 @@ func tocar_colisao(impulso: float, tonalidade: float) -> void:
 
 	for tocador in _tocadores:
 		if not tocador.playing:
-			tocador.volume_db = lerpf(-30.0, -18.0, intensidade)
+			tocador.volume_db = lerpf(-8.0, 4.0, intensidade)
 			tocador.pitch_scale = tonalidade
 			tocador.play()
 			return

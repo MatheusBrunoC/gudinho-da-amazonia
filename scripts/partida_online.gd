@@ -140,7 +140,7 @@ func _atualizar() -> void:
 			_desativar_seletor()
 			_estado.text = "Mire, segure o botão esquerdo e solte. " + ("Tacada inicial." if rodada.tacadas_no_turno == 0 else "Tacada extra: última do turno.")
 		else:
-			_estado.text = "Clique abaixo da linha de lançamento para posicionar a bolinha.\nVermelho indica uma posição inválida."
+			_estado.text = "Clique à direita da linha de lançamento para posicionar a bolinha.\nVermelho indica uma posição inválida."
 			if not rodada.seletor.ativo:
 				rodada.seletor.iniciar(rodada.campo.obter_centro_global(), jogador.bolinha,
 					_ocupantes(), rodada.arena.obter_area_inicial())

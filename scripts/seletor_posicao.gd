@@ -64,7 +64,7 @@ func posicao_permitida(
 		return false
 	if not area.grow(-raio).has_point(posicao):
 		return false
-	if posicao.y < RegrasPartida.altura_linha(centro) + raio:
+	if posicao.x < RegrasPartida.x_linha(centro) + raio:
 		return false
 	for bolinha in ocupantes:
 		if not is_instance_valid(bolinha) or bolinha.is_queued_for_deletion():
@@ -92,9 +92,10 @@ func _draw() -> void:
 	if not ativo:
 		return
 
-	# A faixa de entrada fica abaixo da linha; o restante da arena segue livre.
-	var topo: float = RegrasPartida.altura_linha(_centro)
-	draw_rect(Rect2(to_local(Vector2(_area_inicial.position.x, topo)), Vector2(_area_inicial.size.x, _area_inicial.end.y - topo)), Color(0.25, 0.8, 0.45, 0.12))
+	# A restrição vale apenas para posicionar, não para o caminho da tacada.
+	var linha: float = RegrasPartida.x_linha(_centro)
+	draw_rect(Rect2(to_local(_area_inicial.position), Vector2(linha - _area_inicial.position.x, _area_inicial.size.y)), Color(0.8, 0.15, 0.1, 0.07))
+	draw_rect(Rect2(to_local(Vector2(linha, _area_inicial.position.y)), Vector2(_area_inicial.end.x - linha, _area_inicial.size.y)), Color(0.25, 0.8, 0.45, 0.12))
 
 	var cor_previa: Color = _cor_bolinha
 	cor_previa.a = 0.6

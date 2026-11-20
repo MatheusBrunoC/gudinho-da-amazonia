@@ -91,3 +91,10 @@ python -m unittest testar_cors.py
 
 - FastAPI, CORS: https://fastapi.tiangolo.com/tutorial/cors/
 - Godot, exportação Web e limitações de rede: https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_web.html
+
+
+## Arena com linha vertical (revisão posterior)
+
+O círculo e os 13 alvos foram deslocados para a esquerda, centro (300, 360), com raio de 140 pixels preservado. A linha fica em x=1000; são 700 pixels do centro e 560 pixels da borda. O posicionamento inicial e após penalidade exige que a bolinha inteira esteja à direita da linha. A área à esquerda continua acessível durante a tacada e para continuar de onde a bolinha parou.
+
+O impulso máximo foi ajustado de 750 para 1100 para permitir alcançar os alvos da nova distância, mantendo o impulso mínimo de 150. O validador compartilhado continua atendendo jogador local, computador e anfitrião online. Textos de instruções e testes foram atualizados. Esta revisão não modifica a API nem o banco.

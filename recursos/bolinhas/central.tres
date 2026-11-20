@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://ckcwy7fgbqaak"]
 
-[ext_resource type="Texture2D" path="res://imagens_gude/gude_arco_iris1..png" id="10_sehl2"]
+[ext_resource type="Texture2D" uid="uid://dwkyy74q7rloe" path="res://imagens_gude/gude_arco_iris1..png" id="10_sehl2"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4np2n"]
 atlas = ExtResource("10_sehl2")
 region = Rect2(0, 0, 128, 120)
@@ -116,8 +117,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d2cww")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
-

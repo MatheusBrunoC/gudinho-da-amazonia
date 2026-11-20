@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://biic4yvqbbhhf"]
 
-[ext_resource type="Texture2D" path="res://imagens_gude/Fila de berlindes de vidro coloridas.png" id="8_jf1fy"]
+[ext_resource type="Texture2D" uid="uid://dm1c22sc6pu8h" path="res://imagens_gude/Fila de berlindes de vidro coloridas.png" id="8_jf1fy"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxpyt"]
 atlas = ExtResource("8_jf1fy")
 region = Rect2(0, 288, 135, 144)
@@ -101,8 +102,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m1n0y")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
-

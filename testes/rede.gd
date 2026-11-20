@@ -47,14 +47,14 @@ func _process(delta: float) -> void:
 	var bola: Bolinha = rodada.jogadores[0].bolinha
 	if anfitriao:
 		if etapa == 0 and tempo > 2:
-			bola.entrar_em_campo(Vector2(640, 360))
+			bola.entrar_em_campo(RegrasPartida.CENTRO_CIRCULO)
 			rodada.finalizar_jogada()
 			online._atualizar()
 			online._publicar(true)
 			etapa = 1
 			etapa_tempo = 0
 		elif etapa == 1 and etapa_tempo > 1:
-			bola.entrar_em_campo(Vector2(640, 610))
+			bola.entrar_em_campo(Vector2(1040, 360))
 			rodada.aviso_jogada = ""
 			online._totais.assign([12, 7])
 			rodada.jogadores[0].adicionar_pontos(8)

@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://xf6iillvly1o"]
 
-[ext_resource type="Texture2D" path="res://imagens_gude/gude_vermelha_bolinhas1.0 (1).png" id="9_sehl2"]
+[ext_resource type="Texture2D" uid="uid://dcmgqd2lfi2gs" path="res://imagens_gude/gude_vermelha_bolinhas1.0 (1).png" id="9_sehl2"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ktues"]
 atlas = ExtResource("9_sehl2")
 region = Rect2(0, 0, 128, 120)
@@ -116,8 +117,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g7g77")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
-

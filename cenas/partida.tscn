@@ -7,6 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://5edhd2hocppq" path="res://cenas/interface.tscn" id="4_s6ucg"]
 [ext_resource type="PackedScene" uid="uid://dobw3ib5s6sk6" path="res://cenas/arena.tscn" id="5_i8xwi"]
 
+[ext_resource type="SpriteFrames" path="res://recursos/bolinhas/jogador_1.tres" id="art_jogador_1"]
+[ext_resource type="SpriteFrames" path="res://recursos/bolinhas/jogador_2.tres" id="art_jogador_2"]
+[ext_resource type="SpriteFrames" path="res://recursos/bolinhas/comum.tres" id="art_comum"]
+[ext_resource type="SpriteFrames" path="res://recursos/bolinhas/especial.tres" id="art_especial"]
+[ext_resource type="SpriteFrames" path="res://recursos/bolinhas/central.tres" id="art_central"]
+
 [node name="Partida" type="Node2D" unique_id=741715079]
 script = ExtResource("1_s8iwo")
 
@@ -18,9 +24,13 @@ script = ExtResource("1_e0i4r")
 [node name="SeletorPosicao" parent="." unique_id=2045620411 instance=ExtResource("4_3oal6")]
 
 [node name="BolinhaJogador1" parent="." unique_id=1700986610 instance=ExtResource("2_7yn5o")]
+numero_jogador = 1
+sprite_frames_personalizados = ExtResource("art_jogador_1")
 position = Vector2(320, 360)
 
 [node name="BolinhaJogador2" parent="." unique_id=1450409780 instance=ExtResource("2_7yn5o")]
+numero_jogador = 2
+sprite_frames_personalizados = ExtResource("art_jogador_2")
 position = Vector2(960, 360)
 cor = Color(0.7788304, 0.00032767415, 0.7433455, 1)
 
@@ -29,46 +39,55 @@ width = 2.0
 antialiased = true
 
 [node name="BolinhaAlvo1" parent="." unique_id=771431734 instance=ExtResource("2_7yn5o")]
+sprite_frames_personalizados = ExtResource("art_comum")
 position = Vector2(735, 360)
 cor = Color(0, 1, 0, 1)
 eh_alvo = true
 
 [node name="BolinhaAlvo2" parent="." unique_id=311254622 instance=ExtResource("2_7yn5o")]
+sprite_frames_personalizados = ExtResource("art_comum")
 position = Vector2(707, 427)
 cor = Color(0, 1, 0, 1)
 eh_alvo = true
 
 [node name="BolinhaAlvo3" parent="." unique_id=435433546 instance=ExtResource("2_7yn5o")]
+sprite_frames_personalizados = ExtResource("art_comum")
 position = Vector2(640, 455)
 cor = Color(0, 1, 0, 1)
 eh_alvo = true
 
 [node name="BolinhaAlvo4" parent="." unique_id=1252087269 instance=ExtResource("2_7yn5o")]
+sprite_frames_personalizados = ExtResource("art_comum")
 position = Vector2(573, 427)
 cor = Color(0, 1, 0, 1)
 eh_alvo = true
 
 [node name="BolinhaAlvo5" parent="." unique_id=671725938 instance=ExtResource("2_7yn5o")]
+sprite_frames_personalizados = ExtResource("art_comum")
 position = Vector2(545, 360)
 cor = Color(0, 1, 0, 1)
 eh_alvo = true
 
 [node name="BolinhaAlvo6" parent="." unique_id=1257612666 instance=ExtResource("2_7yn5o")]
+sprite_frames_personalizados = ExtResource("art_comum")
 position = Vector2(573, 293)
 cor = Color(0, 1, 0, 1)
 eh_alvo = true
 
 [node name="BolinhaAlvo7" parent="." unique_id=432821091 instance=ExtResource("2_7yn5o")]
+sprite_frames_personalizados = ExtResource("art_comum")
 position = Vector2(640, 265)
 cor = Color(0, 1, 0, 1)
 eh_alvo = true
 
 [node name="BolinhaAlvo8" parent="." unique_id=2054410736 instance=ExtResource("2_7yn5o")]
+sprite_frames_personalizados = ExtResource("art_comum")
 position = Vector2(707, 293)
 cor = Color(0, 1, 0, 1)
 eh_alvo = true
 
 [node name="BolinhaEspecial1" parent="." unique_id=1740958629 instance=ExtResource("2_7yn5o")]
+sprite_frames_personalizados = ExtResource("art_especial")
 position = Vector2(672, 392)
 mass = 2.0
 cor = Color(1, 0.64705884, 0, 1)
@@ -76,6 +95,7 @@ eh_alvo = true
 valor_pontos = 2
 
 [node name="BolinhaEspecial2" parent="." unique_id=1326449818 instance=ExtResource("2_7yn5o")]
+sprite_frames_personalizados = ExtResource("art_especial")
 position = Vector2(608, 392)
 mass = 2.0
 cor = Color(1, 0.64705884, 0, 1)
@@ -83,6 +103,7 @@ eh_alvo = true
 valor_pontos = 2
 
 [node name="BolinhaEspecial3" parent="." unique_id=106366167 instance=ExtResource("2_7yn5o")]
+sprite_frames_personalizados = ExtResource("art_especial")
 position = Vector2(608, 328)
 mass = 2.0
 cor = Color(1, 0.64705884, 0, 1)
@@ -90,6 +111,7 @@ eh_alvo = true
 valor_pontos = 2
 
 [node name="BolinhaEspecial4" parent="." unique_id=1654554315 instance=ExtResource("2_7yn5o")]
+sprite_frames_personalizados = ExtResource("art_especial")
 position = Vector2(672, 328)
 mass = 2.0
 cor = Color(1, 0.64705884, 0, 1)
@@ -97,6 +119,7 @@ eh_alvo = true
 valor_pontos = 2
 
 [node name="BolinhaCentral" parent="." unique_id=1088773214 instance=ExtResource("2_7yn5o")]
+sprite_frames_personalizados = ExtResource("art_central")
 position = Vector2(640, 360)
 mass = 3.0
 cor = Color(1, 0.84313726, 0, 1)

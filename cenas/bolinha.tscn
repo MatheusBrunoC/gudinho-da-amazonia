@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dlpm44k5tgrs6" path="res://scripts/bolinha.gd" id="1_lic2a"]
 
+[ext_resource type="SpriteFrames" path="res://recursos/bolinhas/comum.tres" id="art"]
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lic2a"]
 friction = 0.2
 bounce = 0.4
@@ -20,3 +22,7 @@ script = ExtResource("1_lic2a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=4164318]
 shape = SubResource("CircleShape2D_kpx0g")
+
+[node name="Arte" type="AnimatedSprite2D" parent="."]
+texture_filter = 2
+sprite_frames = ExtResource("art")

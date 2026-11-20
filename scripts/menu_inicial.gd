@@ -18,7 +18,11 @@ func _ready() -> void:
 	_opcoes.pressed.connect(
 		_abrir_cena.bind("res://cenas/menu_opcoes.tscn")
 	)
+	$Centro/Opcoes/BotaoInstrucoes.pressed.connect(
+		_abrir_cena.bind("res://cenas/instrucoes.tscn")
+	)
 	_sair.pressed.connect(_encerrar)
+	_sair.visible = not OS.has_feature("web")
 
 	_jogar.grab_focus()
 

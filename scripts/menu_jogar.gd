@@ -22,6 +22,10 @@ func _ready() -> void:
 		_abrir_cena.bind("res://cenas/menu_inicial.tscn")
 	)
 
+	if OS.has_feature("web"):
+		_online.disabled = true
+		_online.text = "Multijogador — versão Windows"
+		_online.tooltip_text = "O modo em rede usa ENet. No navegador, jogue local ou treine contra o computador."
 	_local.grab_focus()
 
 

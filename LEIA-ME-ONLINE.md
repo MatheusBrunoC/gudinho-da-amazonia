@@ -8,8 +8,8 @@ Esta versão inclui duas rodadas, placar acumulado, resultado final e revanche, 
 2. Escolha “Jogar online — 2 jogadores” nas duas.
 3. Na primeira, crie a sala na porta 8910. Na segunda, entre com 127.0.0.1 e a mesma porta.
 4. Confirme “Estou pronto” nas duas. O Jogador 1 começa a primeira rodada.
-5. Na sua vez, escolha a posição inicial fora da região proibida; aponte, segure o botão esquerdo para carregar a força e solte.
-6. Espere as bolinhas pararem. Quem pontua continua até o limite de duas tacadas seguidas; uma tacada sem pontos passa a vez.
+5. Na sua vez, escolha a posição inicial atrás da linha de lançamento; aponte, segure o botão esquerdo para carregar a força e solte.
+6. Espere as bolinhas pararem. Quem pontua e para fora do círculo recebe uma única tacada extra; sem pontos ou após a segunda tacada, a vez passa. Parar com o centro da bolinha dentro do círculo (ou na borda) encerra o turno e exige voltar à linha no próximo turno. Os pontos obtidos nessa tacada são mantidos.
 7. Ao acabar a primeira rodada, cada participante clica em “Próxima rodada”. Uma confirmação sozinha não avança.
 8. A segunda rodada recria os 13 alvos, reinicia a câmera e permite novas posições iniciais. O Jogador 2 começa. Os pontos da primeira rodada permanecem no acumulado.
 9. Ao acabar a segunda rodada, ambas as telas mostram o vencedor pelo total ou o empate. Há 38 pontos disponíveis no confronto inteiro.
@@ -67,3 +67,8 @@ Testes em duas instâncias do Godot 4.6.3, em modo headless:
 - Disparos reais dos dois participantes, movimento e alternância de turno após as mudanças.
 
 Os testes dos resultados usam estados controlados de fim de tacada para verificar rapidamente as combinações de placar. Os testes de disparo usam a física real. Não houve teste visual interativo nem teste entre redes reais.
+
+
+## Atualização da PPS II
+
+O modo ENet descrito aqui é para desktop. A versão Web permite jogo local, treino e acesso HTTP à conta e ao histórico. Consulte `docs/ATUALIZACAO_PPS_II.md` para as novas regras, interface e validações desta revisão.

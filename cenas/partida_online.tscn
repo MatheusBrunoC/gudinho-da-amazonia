@@ -38,128 +38,151 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_nqa67")
 
-[node name="Identidade" type="Label" parent="InterfaceOnline/HUD" unique_id=1488506298]
-unique_name_in_owner = true
-layout_mode = 1
-offset_left = 20.0
-offset_top = 16.0
-offset_right = 380.0
-offset_bottom = 50.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.0627451, 0.23137255, 0.16078432, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 18
-text = "Preparando partida…"
 
-[node name="Estado" type="Label" parent="InterfaceOnline/HUD" unique_id=570964650]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -212.0
-offset_top = -26.0
-offset_right = 217.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.0627451, 0.23137255, 0.16078432, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 18
-text = "Aguardando jogadores…"
-autowrap_mode = 3
+[node name="Faixa" type="ColorRect" parent="InterfaceOnline/HUD"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 1264.0
+offset_bottom = 124.0
+mouse_filter = 2
+color = Color(0.035, 0.19, 0.13, 0.94)
 
-[node name="Placar" type="Label" parent="InterfaceOnline/HUD" unique_id=1987997981]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -96.0
-offset_right = 96.0
-offset_bottom = 42.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.0627451, 0.23137255, 0.16078432, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 24
-text = "Rodada 1/2 — J1: 0 | J2: 0"
-
-[node name="Total" type="Label" parent="InterfaceOnline/HUD" unique_id=648798415]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -132.0
-offset_top = 36.0
-offset_right = 132.0
-offset_bottom = 106.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.84313726, 0.92156863, 0.8666667, 1)
-theme_override_colors/font_outline_color = Color(0.0627451, 0.23137255, 0.16078432, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 18
-text = "Total acumulado — J1: 0 | J2: 0"
-
-[node name="IndicadorVez" type="Label" parent="InterfaceOnline/HUD" unique_id=970346604]
+[node name="Identidade" type="Label" parent="InterfaceOnline/HUD"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 507.0
-offset_top = 64.0
-offset_right = 770.0
-offset_bottom = 92.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.0627451, 0.23137255, 0.16078432, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 20
+offset_left = 24.0
+offset_top = 42.0
+offset_right = 254.0
+offset_bottom = 90.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
+theme_override_constants/outline_size = 3
+text = "Preparando partida…"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Placar" type="Label" parent="InterfaceOnline/HUD"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 270.0
+offset_top = 18.0
+offset_right = 1010.0
+offset_bottom = 44.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
+theme_override_constants/outline_size = 3
+text = "RODADA 1 DE 2 • PLACAR GERAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Total" type="Label" parent="InterfaceOnline/HUD"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 260.0
+offset_top = 43.0
+offset_right = 1020.0
+offset_bottom = 87.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
+theme_override_constants/outline_size = 3
+text = "Jogador 1   0 × 0   Jogador 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="IndicadorVez" type="Label" parent="InterfaceOnline/HUD"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 270.0
+offset_top = 88.0
+offset_right = 1010.0
+offset_bottom = 120.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
+theme_override_constants/outline_size = 3
 text = "AGUARDANDO JOGADORES"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="Forca" type="ProgressBar" parent="InterfaceOnline/HUD" unique_id=93953449]
+[node name="Estado" type="Label" parent="InterfaceOnline/HUD"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -27.0
-offset_right = 240.0
-grow_vertical = 0
-theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
-theme_override_colors/font_outline_color = Color(0.0627451, 0.23137255, 0.16078432, 1)
-theme_override_font_sizes/font_size = 16
-theme_override_styles/background = SubResource("StyleBoxFlat_nqa67")
-theme_override_styles/fill = SubResource("StyleBoxFlat_26kwi")
+layout_mode = 0
+offset_left = 160.0
+offset_top = 128.0
+offset_right = 1120.0
+offset_bottom = 176.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
+theme_override_constants/outline_size = 3
+text = "Aguardando jogadores…"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Aviso" type="Label" parent="InterfaceOnline/HUD"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 160.0
+offset_top = 178.0
+offset_right = 1120.0
+offset_bottom = 214.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
+theme_override_constants/outline_size = 3
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="RotuloForca" type="Label" parent="InterfaceOnline/HUD"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 644.0
+offset_right = 264.0
+offset_bottom = 666.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
+theme_override_constants/outline_size = 3
+text = "FORÇA DA TACADA"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Forca" type="ProgressBar" parent="InterfaceOnline/HUD"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 24.0
+offset_top = 674.0
+offset_right = 264.0
+offset_bottom = 698.0
+mouse_filter = 2
 script = ExtResource("3_26kwi")
 
-[node name="Continuar" type="Button" parent="InterfaceOnline/HUD" unique_id=1111249065]
+[node name="Continuar" type="Button" parent="InterfaceOnline/HUD"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -172.0
-offset_top = -66.0
-offset_right = -16.0
-offset_bottom = -19.0
-grow_horizontal = 0
-grow_vertical = 0
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 650.0
+offset_right = 1250.0
+offset_bottom = 700.0
 text = "Próxima rodada"
 
-[node name="Sair" type="Button" parent="InterfaceOnline/HUD" unique_id=1079455590]
+[node name="Sair" type="Button" parent="InterfaceOnline/HUD"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -249.0
-offset_top = 6.0
-offset_right = -12.0
-offset_bottom = 74.0
-grow_horizontal = 0
-text = "Voltar à sala (desconectar)"
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 42.0
+offset_right = 1244.0
+offset_bottom = 90.0
+text = "Voltar à sala"

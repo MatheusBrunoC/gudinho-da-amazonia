@@ -103,10 +103,11 @@ func _atualizar() -> void:
 	if rodada == null:
 		return
 	_atualizar_indicador_vez()
+	%Aviso.text = rodada.aviso_jogada
 	var pontos1: int = rodada.jogadores[0].obter_pontos()
 	var pontos2: int = rodada.jogadores[1].obter_pontos()
-	_placar.text = "Rodada %d/2 — J1: %d | J2: %d" % [_numero_rodada, pontos1, pontos2]
-	_total.text = "Total acumulado — J1: %d | J2: %d" % [
+	_placar.text = "RODADA %d DE 2 • PLACAR GERAL" % _numero_rodada
+	_total.text = "Jogador 1   %d  ×  %d   Jogador 2" % [
 		_totais[0] + (0 if rodada.partida_encerrada else pontos1),
 		_totais[1] + (0 if rodada.partida_encerrada else pontos2)]
 	_continuar.visible = _conectados() and rodada.partida_encerrada
@@ -137,9 +138,9 @@ func _atualizar() -> void:
 			_estado.text = "Vez de %s. Aguarde." % jogador.nome
 		elif jogador.bolinha.em_campo:
 			_desativar_seletor()
-			_estado.text = "Sua vez: mire, segure o botão esquerdo e solte.\nTacadas disponíveis neste turno: %d" % (rodada.MAX_TACADAS_CONSECUTIVAS - rodada.tacadas_no_turno)
+			_estado.text = "Mire, segure o botão esquerdo e solte. " + ("Tacada inicial." if rodada.tacadas_no_turno == 0 else "Tacada extra: última do turno.")
 		else:
-			_estado.text = "Escolha sua posição inicial fora da região proibida e clique.\nVermelho indica uma posição inválida."
+			_estado.text = "Clique abaixo da linha de lançamento para posicionar a bolinha.\nVermelho indica uma posição inválida."
 			if not rodada.seletor.ativo:
 				rodada.seletor.iniciar(rodada.campo.obter_centro_global(), jogador.bolinha,
 					_ocupantes(), rodada.arena.obter_area_inicial())
@@ -269,6 +270,7 @@ func _validar_tacada(id: int, direcao: Vector2, carga: float, versao: int) -> vo
 	if not bolinha.em_campo:
 		_recusar(id)
 		return
+	rodada.aviso_jogada = ""
 	rodada.jogada_em_andamento = true
 	_quadros_apos_disparo = 0
 	bolinha.sleeping = false
@@ -300,7 +302,7 @@ func _publicar(confiavel: bool) -> void:
 		if no is Bolinha and not no.is_queued_for_deletion():
 			bolinhas[String(no.name)] = [no.global_position, no.rotation, no.em_campo]
 	var estado: Dictionary = {
-		"seq": _sequencia, "versao": _versao_acao, "bolinhas": bolinhas,
+		"aviso": rodada.aviso_jogada, "seq": _sequencia, "versao": _versao_acao, "bolinhas": bolinhas,
 		"epoca": _epoca, "liberada": _rodada_liberada,
 		"totais": _totais.duplicate(), "confirmacoes": _confirmacoes.duplicate(),
 		"vez": rodada.indice_jogador_atual, "tacadas": rodada.tacadas_no_turno,
@@ -334,6 +336,7 @@ func _aplicar_estado(estado: Dictionary) -> void:
 		_aguardando_acao = false
 	_versao_acao = int(estado.versao)
 	rodada.indice_jogador_atual = int(estado.vez)
+	rodada.aviso_jogada = str(estado.get("aviso", ""))
 	rodada.tacadas_no_turno = int(estado.tacadas)
 	rodada.jogada_em_andamento = bool(estado.movendo)
 	rodada.partida_encerrada = bool(estado.fim)

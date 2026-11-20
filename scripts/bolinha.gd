@@ -11,6 +11,7 @@ var _contatos_anteriores: Dictionary = {}
 
 
 @export var cor: Color = Color("#2980B9")
+@export_range(0, 2) var numero_jogador: int = 0
 @export var eh_alvo: bool = false
 @export_range(1, 10, 1) var valor_pontos: int = 1
 
@@ -24,29 +25,44 @@ var _mascara_original: int
 
 
 
+@export var sprite_frames_personalizados: SpriteFrames
+@onready var _arte: AnimatedSprite2D = get_node_or_null("Arte")
+var _ultima_posicao: Vector2
+
+
+func _ready() -> void:
+	_ultima_posicao = global_position
+	if _arte != null:
+		if sprite_frames_personalizados != null:
+			_arte.sprite_frames = sprite_frames_personalizados
+		var textura: Texture2D = _arte.sprite_frames.get_frame_texture("default", 0)
+		# Ajusta cada folha à colisão, sem alterar a física da bolinha.
+		_arte.scale = Vector2.ONE * (RAIO * 2.0 / maxf(textura.get_width(), textura.get_height()))
+		_arte.stop()
+
+
+func _process(delta: float) -> void:
+	var deslocamento: float = global_position.distance_to(_ultima_posicao)
+	_ultima_posicao = global_position
+	if _arte == null:
+		return
+	# Também anima no convidado online, cuja física é controlada pelo anfitrião.
+	if em_campo and (linear_velocity.length() > 5.0 or deslocamento > 5.0 * delta):
+		_arte.play("default")
+	else:
+		_arte.pause()
+
+
 func _draw() -> void:
-	# Corpo da bolinha.
-	draw_circle(Vector2.ZERO, RAIO, cor)
+	if numero_jogador > 0:
+		draw_arc(Vector2.ZERO, RAIO + 3, 0, TAU, 32, cor, 2, true)
+		var texto: String = str(numero_jogador)
+		draw_string_outline(ThemeDB.fallback_font, Vector2(-4, -18), texto, HORIZONTAL_ALIGNMENT_LEFT, -1, 15, 4, Color("#103A2A"))
+		draw_string(ThemeDB.fallback_font, Vector2(-4, -18), texto, HORIZONTAL_ALIGNMENT_LEFT, -1, 15, Color.WHITE)
+	if get_node_or_null("Arte") == null:
+		draw_circle(Vector2.ZERO, RAIO, cor)
 
-	# Contorno.
-	draw_arc(
-		Vector2.ZERO,
-		RAIO,
-		0.0,
-		TAU,
-		48,
-		cor.darkened(0.4),
-		1.5,
-		true
-	)
 
-	# Pequeno brilho para dar aparência de vidro.
-	draw_circle(
-		Vector2(-4.0, -4.0),
-		3.0,
-		Color(1.0, 1.0, 1.0, 0.7)
-	)
-	
 func obter_raio() -> float:
 	return RAIO
 	
@@ -92,10 +108,10 @@ func obter_valor_pontos() -> int:
 	
 
 func aguardar_entrada() -> void:
+	if em_campo:
+		_camada_original = collision_layer
+		_mascara_original = collision_mask
 	em_campo = false
-
-	_camada_original = collision_layer
-	_mascara_original = collision_mask
 
 	freeze = true
 	linear_velocity = Vector2.ZERO

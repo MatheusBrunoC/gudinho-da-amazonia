@@ -14,14 +14,14 @@ config/name="gudinho da amazonia"
 config/version="0.1.0"
 run/main_scene="res://cenas/menu_inicial.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="uid://c4yf8w4ua5o35"
+config/icon="res://recursos/imagens/icone_gudinho.png"
 
 [autoload]
 
 RedeSala="*res://scripts/rede_sala.gd"
-SonsJogo="*uid://capxetcgtco1g"
-HistoricoTreinos="*uid://i1et0qlkps0f"
-SessaoJogador="*uid://da0n3st2v34y8"
+SonsJogo="*res://scripts/sons_jogo.gd"
+HistoricoTreinos="*res://scripts/historico_treinos.gd"
+SessaoJogador="*res://scripts/sessao_jogador.gd"
 
 [display]
 

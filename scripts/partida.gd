@@ -28,6 +28,8 @@ var partida_encerrada: bool = false
 var carregando: bool = false
 var carga: float = 0.0
 var tacadas_no_turno: int = 0
+var aviso_jogada: String = ""
+var _quadros_apos_disparo: int = 0
 
 var contra_computador: bool = false
 var _computador: AdversarioComputador = AdversarioComputador.new()
@@ -42,7 +44,7 @@ func _ready() -> void:
 	seletor.posicao_confirmada.connect(_confirmar_posicao_inicial)
 
 	jogadores.append(
-		JogadorPartida.new("Jogador 1", $BolinhaJogador1)
+		JogadorPartida.new("Você" if contra_computador else "Jogador 1", $BolinhaJogador1)
 	)
 	jogadores.append(
 		JogadorPartida.new(
@@ -59,6 +61,7 @@ func _ready() -> void:
 		jogadores[1].bolinha
 	])
 
+	interface.definir_jogadores(jogadores[0].nome, jogadores[1].nome)
 	atualizar_placar()
 	_preparar_vez()
 	interface.menu_solicitado.connect(_solicitar_menu)
@@ -77,7 +80,7 @@ func _process(delta: float) -> void:
 	if partida_encerrada:
 		return
 
-	if jogada_em_andamento and todas_bolinhas_paradas():
+	if jogada_em_andamento and _quadros_apos_disparo > 2 and todas_bolinhas_paradas():
 		finalizar_jogada()
 
 	mira.visible = (
@@ -103,6 +106,11 @@ func _process(delta: float) -> void:
 
 	interface.atualizar_forca(carga)
 	atualizar_mira()
+
+func _physics_process(_delta: float) -> void:
+	if jogada_em_andamento:
+		_quadros_apos_disparo += 1
+
 
 func todas_bolinhas_paradas() -> bool:
 	for no in get_children():
@@ -195,6 +203,10 @@ func executar_tacada( direcao: Vector2, forca_normalizada: float) -> bool:
 	)
 
 	jogada_em_andamento = true
+	_quadros_apos_disparo = 0
+	aviso_jogada = ""
+	interface.mostrar_aviso("")
+	interface.mostrar_movimento(obter_jogador_atual().nome)
 	mira.hide()
 
 	bolinha.sleeping = false
@@ -206,7 +218,14 @@ func executar_tacada( direcao: Vector2, forca_normalizada: float) -> bool:
 
 
 func finalizar_jogada() -> void:
+	var jogador: JogadorPartida = obter_jogador_atual()
+	var penalidade: bool = campo.centro_esta_no_circulo(jogador.bolinha.global_position)
 	var pontos_da_jogada: int = recolher_bolinhas_fora()
+	aviso_jogada = ""
+	if penalidade:
+		jogador.bolinha.aguardar_entrada()
+		aviso_jogada = "%s: bolinha no círculo. Perde a vez e volta à linha no próximo turno." % jogador.nome
+	interface.mostrar_aviso(aviso_jogada)
 
 	obter_jogador_atual().adicionar_pontos(pontos_da_jogada)
 	tacadas_no_turno += 1
@@ -222,7 +241,7 @@ func finalizar_jogada() -> void:
 		tacadas_no_turno >= MAX_TACADAS_CONSECUTIVAS
 	)
 
-	if pontos_da_jogada == 0 or atingiu_limite:
+	if penalidade or pontos_da_jogada == 0 or atingiu_limite:
 		indice_jogador_atual = (
 			indice_jogador_atual + 1
 		) % jogadores.size()

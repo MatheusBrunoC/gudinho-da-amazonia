@@ -21,7 +21,11 @@ func _draw() -> void:
 		4.0,
 		true
 	)
-	
+
+	var y: float = RegrasPartida.altura_linha(centro_circulo)
+	draw_line(Vector2(12, y), Vector2(1268, y), cor_linha, 4.0, true)
+	draw_string(ThemeDB.fallback_font, Vector2(24, y - 12), "LINHA DE LANÇAMENTO • posicione abaixo", HORIZONTAL_ALIGNMENT_LEFT, -1, 18, cor_linha)
+
 func bolinha_esta_fora(posicao_global: Vector2, raio: float) -> bool:
 	var posicao_local: Vector2 = to_local(posicao_global)
 	var distancia: float = posicao_local.distance_to(centro_circulo)
@@ -30,3 +34,8 @@ func bolinha_esta_fora(posicao_global: Vector2, raio: float) -> bool:
 
 func obter_centro_global() -> Vector2:
 	return to_global(centro_circulo)
+
+
+# A linha do círculo conta como dentro; basta o centro da bolinha tocar a área.
+func centro_esta_no_circulo(posicao_global: Vector2) -> bool:
+	return to_local(posicao_global).distance_to(centro_circulo) <= raio_circulo

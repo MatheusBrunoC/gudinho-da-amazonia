@@ -39,19 +39,13 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="Centro" type="CenterContainer" parent="." unique_id=1427237275]
-custom_minimum_size = Vector2(440, 0)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -260.0
-offset_top = -280.0
-offset_right = 260.0
-offset_bottom = 280.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Painel" type="Panel" parent="Centro" unique_id=1703455521]
 custom_minimum_size = Vector2(520, 560)

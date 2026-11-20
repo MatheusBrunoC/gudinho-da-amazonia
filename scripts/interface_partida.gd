@@ -15,6 +15,23 @@ signal menu_solicitado
 @onready var _texto_historico: Label = $HUD/TextoHistorico
 
 var _permite_desistir: bool = false
+var _nomes: PackedStringArray = ["Jogador 1", "Jogador 2"]
+var _base: Vector2i = Vector2i.ZERO
+var _pontos: Vector2i = Vector2i.ZERO
+
+func definir_jogadores(nome1: String, nome2: String) -> void:
+	_nomes = [nome1, nome2]
+	_atualizar_total()
+
+func _atualizar_total() -> void:
+	_texto_pontuacao.text = "%s   %d  ×  %d   %s" % [_nomes[0], _base.x + _pontos.x, _base.y + _pontos.y, _nomes[1]]
+
+func mostrar_aviso(mensagem: String) -> void:
+	$HUD/TextoAviso.text = mensagem
+
+func mostrar_movimento(nome: String) -> void:
+	_texto_vez.text = "Tacada de %s • aguarde as bolinhas pararem" % nome
+
 
 
 func _ready() -> void:
@@ -29,25 +46,19 @@ func atualizar_forca(carga: float) -> void:
 
 
 func atualizar_placar(pontos1: int, pontos2: int) -> void:
-	_texto_pontuacao.text = "Nesta rodada — J1: %d | J2: %d" % [
-		pontos1,
-		pontos2
-	]
+	_pontos = Vector2i(pontos1, pontos2)
+	_atualizar_total()
 
 
 func mostrar_vez(nome: String, tacadas_restantes: int) -> void:
-	_texto_vez.text = "Vez de %s | Limite restante: %d" % [
-		nome,
-		tacadas_restantes
-	]
+	var etapa: String = "tacada inicial" if tacadas_restantes == 2 else "tacada extra • última do turno"
+	_texto_vez.text = "Vez de %s — %s" % [nome, etapa]
 
 
 func mostrar_contexto(numero: int, total1: int, total2: int) -> void:
-	_texto_rodada.text = "Rodada %d/2 | Total acumulado — J1: %d | J2: %d" % [
-		numero,
-		total1,
-		total2
-	]
+	_texto_rodada.text = "RODADA %d DE 2  •  PLACAR GERAL" % numero
+	_base = Vector2i(total1, total2)
+	_atualizar_total()
 
 
 func mostrar_resultado(
@@ -71,7 +82,7 @@ func _solicitar_continuacao() -> void:
 	continuacao_solicitada.emit()
 	
 func mostrar_escolha_posicao(nome_jogador: String) -> void:
-	_texto_vez.text = "%s: escolha fora do círculo marcado. Vermelho = inválido." % nome_jogador
+	_texto_vez.text = "%s: clique abaixo da linha para posicionar a bolinha." % nome_jogador
 	
 func _solicitar_menu() -> void:
 	menu_solicitado.emit()

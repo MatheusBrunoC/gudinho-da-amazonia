@@ -61,15 +61,11 @@ func _ao_encerrar_rodada(pontos1: int, pontos2: int) -> void:
 	_total_jogador2 += pontos2
 	_aguardando_continuacao = true
 
-	_rodada.mostrar_contexto(
-		_numero_rodada,
-		_total_jogador1,
-		_total_jogador2
-	)
+	# O HUD já soma a rodada atual à base anterior.
 
 	if _numero_rodada == 1:
 		_rodada.apresentar_resultado(
-			"Rodada 1 encerrada! O jogador 2 começa a próxima.",
+			"Rodada 1 encerrada! %s começa a próxima." % _rodada.jogadores[1].nome,
 			"Próxima rodada"
 		)
 		return
@@ -77,9 +73,9 @@ func _ao_encerrar_rodada(pontos1: int, pontos2: int) -> void:
 	var resultado: String = "A partida terminou empatada!"
 
 	if _total_jogador1 > _total_jogador2:
-		resultado = "Jogador 1 venceu a partida!"
+		resultado = "%s venceu a partida!" % _rodada.jogadores[0].nome
 	elif _total_jogador2 > _total_jogador1:
-		resultado = "Jogador 2 venceu a partida!"
+		resultado = "%s venceu a partida!" % _rodada.jogadores[1].nome
 
 	_rodada.apresentar_resultado(
 		resultado,

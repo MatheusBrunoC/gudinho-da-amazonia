@@ -24,70 +24,127 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_psy7u")
 
-[node name="BarraForca" type="ProgressBar" parent="HUD" unique_id=1708052403]
+
+[node name="Faixa" type="ColorRect" parent="HUD"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 650.0
-offset_right = 290.0
-offset_bottom = 677.0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 1264.0
+offset_bottom = 124.0
 mouse_filter = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_fh05e")
+color = Color(0.035, 0.19, 0.13, 0.94)
+
+[node name="TextoRodada" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 18.0
+offset_right = 1010.0
+offset_bottom = 44.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
+theme_override_constants/outline_size = 3
+text = "RODADA 1 DE 2 • PLACAR GERAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextoPontuacao" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 43.0
+offset_right = 1020.0
+offset_bottom = 87.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
+theme_override_constants/outline_size = 3
+text = "Jogador 1   0 × 0   Jogador 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextoVez" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 88.0
+offset_right = 1030.0
+offset_bottom = 120.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
+theme_override_constants/outline_size = 3
+text = "Vez de Jogador 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextoAviso" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 130.0
+offset_right = 1160.0
+offset_bottom = 182.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
+theme_override_constants/outline_size = 3
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="RotuloForca" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 644.0
+offset_right = 264.0
+offset_bottom = 666.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
+theme_override_constants/outline_size = 3
+text = "FORÇA DA TACADA"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BarraForca" type="ProgressBar" parent="HUD"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 674.0
+offset_right = 264.0
+offset_bottom = 698.0
+mouse_filter = 2
 script = ExtResource("3_fh05e")
 
-[node name="TextoPontuacao" type="Label" parent="HUD" unique_id=1264277070]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -62.5
-offset_right = 62.5
-offset_bottom = 39.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 28
-text = "Pontos: 0"
-
-[node name="TextoVez" type="Label" parent="HUD" unique_id=417215126]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -95.0
-offset_top = 38.0
-offset_right = 95.0
-offset_bottom = 72.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 24
-text = "Vez de Jogador 1"
-
-[node name="TextoRodada" type="Label" parent="HUD" unique_id=2029422802]
+[node name="TextoHistorico" type="Label" parent="HUD"]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 60.0
-offset_right = 60.0
-offset_bottom = 88.0
-theme_override_font_sizes/font_size = 20
+offset_left = 290.0
+offset_top = 653.0
+offset_right = 960.0
+offset_bottom = 703.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
+theme_override_constants/outline_size = 3
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="TextoHistorico" type="Label" parent="HUD" unique_id=900815525]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="BotaoContinuar" type="Button" parent="HUD" unique_id=1091891529]
+[node name="BotaoContinuar" type="Button" parent="HUD"]
 layout_mode = 0
 offset_left = 1000.0
-offset_top = 640.0
-offset_right = 1240.0
-offset_bottom = 690.0
+offset_top = 650.0
+offset_right = 1250.0
+offset_bottom = 700.0
 text = "Próxima rodada"
 
-[node name="BotaoMenu" type="Button" parent="HUD" unique_id=80429339]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -254.0
-offset_top = 12.0
-offset_right = -14.0
-offset_bottom = 62.0
-grow_horizontal = 0
+[node name="BotaoMenu" type="Button" parent="HUD"]
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 42.0
+offset_right = 1244.0
+offset_bottom = 90.0
 text = "Voltar ao menu"

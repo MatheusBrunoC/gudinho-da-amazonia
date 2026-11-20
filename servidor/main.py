@@ -1,4 +1,6 @@
 import logging
+import os
+from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
 
 import psycopg
@@ -40,6 +42,25 @@ from slowapi.util import get_remote_address
 app = FastAPI(
     title="API Gudinho da Amazônia",
     version="0.1.0",
+)
+
+# Origens separadas por vírgula, sem caminho e sem barra final.
+# O navegador precisa desta autorização mesmo quando o aplicativo Windows funciona.
+ORIGENS_WEB = [
+    origem.strip().rstrip("/")
+    for origem in os.getenv(
+        "CORS_ORIGINS", "https://lively-sunburst-2446bf.netlify.app"
+    ).split(",")
+    if origem.strip()
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ORIGENS_WEB,
+    allow_credentials=False,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Authorization", "Content-Type"],
+    expose_headers=["Retry-After"],
+    max_age=600,
 )
 
 limitador = Limiter(

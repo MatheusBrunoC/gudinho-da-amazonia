@@ -3,7 +3,6 @@ extends Node2D
 
 signal posicao_confirmada(posicao_global: Vector2)
 
-@export var distancia_minima: float = 300.0
 
 var ativo: bool = false
 
@@ -65,7 +64,7 @@ func posicao_permitida(
 		return false
 	if not area.grow(-raio).has_point(posicao):
 		return false
-	if posicao.distance_to(centro) < distancia_minima + raio:
+	if posicao.y < RegrasPartida.altura_linha(centro) + raio:
 		return false
 	for bolinha in ocupantes:
 		if not is_instance_valid(bolinha) or bolinha.is_queued_for_deletion():
@@ -93,24 +92,9 @@ func _draw() -> void:
 	if not ativo:
 		return
 
-	# Região proibida, com preenchimento transparente.
-	draw_circle(
-		to_local(_centro),
-		distancia_minima,
-		Color(0.8, 0.15, 0.1, 0.12)
-	)
-
-	# Contorno da distância mínima.
-	draw_arc(
-		to_local(_centro),
-		distancia_minima,
-		0.0,
-		TAU,
-		128,
-		Color(1.0, 0.75, 0.65, 0.65),
-		2.0,
-		true
-	)
+	# A faixa de entrada fica abaixo da linha; o restante da arena segue livre.
+	var topo: float = RegrasPartida.altura_linha(_centro)
+	draw_rect(Rect2(to_local(Vector2(_area_inicial.position.x, topo)), Vector2(_area_inicial.size.x, _area_inicial.end.y - topo)), Color(0.25, 0.8, 0.45, 0.12))
 
 	var cor_previa: Color = _cor_bolinha
 	cor_previa.a = 0.6

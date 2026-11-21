@@ -70,6 +70,8 @@ func _ready() -> void:
 		if no is Bolinha:
 			no.impacto_detectado.connect(_ao_impacto)
 	alvo_recolhido.connect(_ao_alvo_recolhido)
+	mira.visibility_changed.connect(_sincronizar_placar_com_mira)
+	_sincronizar_placar_com_mira()
 	
 	
 func obter_jogador_atual() -> JogadorPartida:
@@ -499,3 +501,11 @@ func mostrar_efeito_pontos(
 	add_child(efeito)
 	efeito.global_position = posicao_global
 	efeito.apresentar(valor)
+
+func _sincronizar_placar_com_mira() -> void:
+	var mostrar_placar: bool = not mira.visible
+
+	$Interface/HUD/Faixa.visible = mostrar_placar
+	$Interface/HUD/TextoRodada.visible = mostrar_placar
+	$Interface/HUD/TextoPontuacao.visible = mostrar_placar
+	$Interface/HUD/TextoVez.visible = mostrar_placar

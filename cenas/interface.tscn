@@ -4,13 +4,6 @@
 [ext_resource type="Theme" uid="uid://ba2iyc674i7ad" path="res://recursos/tema_interface.tres" id="2_psy7u"]
 [ext_resource type="Script" uid="uid://81qoy0f6tap1" path="res://scripts/barra_forca.gd" id="3_fh05e"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh05e"]
-bg_color = Color(0.04755766, 0.047557645, 0.047557645, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
 [node name="Interface" type="CanvasLayer" unique_id=1724434939]
 script = ExtResource("1_djdx6")
 
@@ -24,92 +17,84 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_psy7u")
 
-
-[node name="Faixa" type="ColorRect" parent="HUD"]
+[node name="Faixa" type="ColorRect" parent="HUD" unique_id=1300386140]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 12.0
-offset_right = 1264.0
-offset_bottom = 124.0
+offset_right = 576.0
+offset_bottom = 116.0
 mouse_filter = 2
-color = Color(0.035, 0.19, 0.13, 0.94)
+color = Color(0.035, 0.19, 0.13, 0.9)
 
-[node name="TextoRodada" type="Label" parent="HUD"]
+[node name="TextoRodada" type="Label" parent="HUD" unique_id=1883179827]
 layout_mode = 0
-offset_left = 270.0
+offset_left = 28.0
 offset_top = 18.0
-offset_right = 1010.0
-offset_bottom = 44.0
-mouse_filter = 2
-theme_override_font_sizes/font_size = 16
+offset_right = 564.0
+offset_bottom = 38.0
 theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
-theme_override_constants/outline_size = 3
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 14
 text = "RODADA 1 DE 2 • PLACAR GERAL"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
 
-[node name="TextoPontuacao" type="Label" parent="HUD"]
+[node name="TextoPontuacao" type="Label" parent="HUD" unique_id=766829730]
 layout_mode = 0
-offset_left = 260.0
-offset_top = 43.0
-offset_right = 1020.0
-offset_bottom = 87.0
-mouse_filter = 2
-theme_override_font_sizes/font_size = 30
+offset_left = 28.0
+offset_top = 39.0
+offset_right = 564.0
+offset_bottom = 71.0
 theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
-theme_override_constants/outline_size = 3
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 24
 text = "Jogador 1   0 × 0   Jogador 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="TextoVez" type="Label" parent="HUD"]
+[node name="TextoVez" type="Label" parent="HUD" unique_id=1623765585]
 layout_mode = 0
-offset_left = 250.0
-offset_top = 88.0
-offset_right = 1030.0
-offset_bottom = 120.0
-mouse_filter = 2
-theme_override_font_sizes/font_size = 19
+offset_left = 28.0
+offset_top = 72.0
+offset_right = 564.0
+offset_bottom = 110.0
 theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
-theme_override_constants/outline_size = 3
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 16
 text = "Vez de Jogador 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="TextoAviso" type="Label" parent="HUD"]
+[node name="TextoAviso" type="Label" parent="HUD" unique_id=40586328]
 layout_mode = 0
 offset_left = 120.0
 offset_top = 130.0
 offset_right = 1160.0
 offset_bottom = 182.0
-mouse_filter = 2
-theme_override_font_sizes/font_size = 19
 theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
 theme_override_constants/outline_size = 3
-text = ""
+theme_override_font_sizes/font_size = 19
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="RotuloForca" type="Label" parent="HUD"]
+[node name="RotuloForca" type="Label" parent="HUD" unique_id=515982182]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 644.0
 offset_right = 264.0
 offset_bottom = 666.0
-mouse_filter = 2
-theme_override_font_sizes/font_size = 14
 theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
 theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
 text = "FORÇA DA TACADA"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="BarraForca" type="ProgressBar" parent="HUD"]
+[node name="BarraForca" type="ProgressBar" parent="HUD" unique_id=1256134508]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 674.0
@@ -118,22 +103,20 @@ offset_bottom = 698.0
 mouse_filter = 2
 script = ExtResource("3_fh05e")
 
-[node name="TextoHistorico" type="Label" parent="HUD"]
+[node name="TextoHistorico" type="Label" parent="HUD" unique_id=932280117]
 layout_mode = 0
 offset_left = 290.0
 offset_top = 653.0
 offset_right = 960.0
 offset_bottom = 703.0
-mouse_filter = 2
-theme_override_font_sizes/font_size = 16
 theme_override_colors/font_outline_color = Color(0.04, 0.12, 0.08, 1)
 theme_override_constants/outline_size = 3
-text = ""
+theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="BotaoContinuar" type="Button" parent="HUD"]
+[node name="BotaoContinuar" type="Button" parent="HUD" unique_id=725888824]
 layout_mode = 0
 offset_left = 1000.0
 offset_top = 650.0
@@ -141,7 +124,7 @@ offset_right = 1250.0
 offset_bottom = 700.0
 text = "Próxima rodada"
 
-[node name="BotaoMenu" type="Button" parent="HUD"]
+[node name="BotaoMenu" type="Button" parent="HUD" unique_id=628443790]
 layout_mode = 0
 offset_left = 1040.0
 offset_top = 42.0
